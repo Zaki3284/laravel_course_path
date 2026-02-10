@@ -82,7 +82,7 @@
            <?php foreach ($filteredBooks as $book) : ?>
             <li>
                 <a href="<?= $book['purchaseUrl'] ?>">
-                    <?= $book['name']; ?> (<?= $book['releaseYear'] ?>) - By <?= $book['Auther'] ?>
+                    <?= $book['name']; ?> (<?= $book['releaseYear'] ?>) ==> By <?= $book['Auther'] ?>
                 </a>
             </li>
         <?php endforeach; ?>
