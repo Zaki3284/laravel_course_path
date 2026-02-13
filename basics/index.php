@@ -1,7 +1,8 @@
 <?php
 
-$numbers = ["Alahamdou lillah ","Allah Akbar","Soubhana Allah","Laillaha ila Allah"];
+require("functions.php");
+$heading ="HomePage";
 
 
 
-require("index.view.php");
+require("views/index.view.php");
