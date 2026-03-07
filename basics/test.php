@@ -1,16 +1,18 @@
 <?php
 
-$userAgent = $_SERVER['HTTP_USER_AGENT'];
+require('functions.php');
 
-echo $userAgent;
-echo "<pre>";
 
-if (str_contains($userAgent, 'Edg')) {
-    echo "Edge browser";
-}
-elseif (str_contains($userAgent, 'Chrome')) {
-    echo "Chrome browser";
-}
-else {
-    echo "Other browser";
-}
+//connect to database
+$dns = "mysql:host=localhost;port=3306;dbname=posts;user=root;chaset=utf8mp4";
+
+$pdo= new PDO($dns);
+
+$statment = $pdo->prepare("select * from posts");
+$statment->execute();
+
+$posts = $statment->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+dd($posts);
