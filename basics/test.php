@@ -1,18 +1,14 @@
 <?php
 
 require('functions.php');
+require('Database.php'); 
 
-
-//connect to database
-$dns = "mysql:host=localhost;port=3306;dbname=posts;user=root;chaset=utf8mp4";
-
-$pdo= new PDO($dns);
-
-$statment = $pdo->prepare("select * from posts");
-$statment->execute();
-
-$posts = $statment->fetchAll(PDO::FETCH_ASSOC);
+$db = new Database();
+$posts = $db->query("select * from posts ")->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-dd($posts);
+
+foreach ($posts as $post) {
+    echo "<li>" . $post['title'] . "</li>";
+}
