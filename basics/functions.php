@@ -9,6 +9,9 @@ function dd($value)
     die();
 }
 
+define('BASE_PATH', '/laravel_course_path/basics');
+
 function urlIs($value) {
-    return $_SERVER['REQUEST_URI'] === $value;
+    $uri = str_replace(BASE_PATH, '', $_SERVER['REQUEST_URI']);
+    return $uri === $value;
 }
