@@ -1,8 +1,4 @@
 <?php
 
-require("functions.php");
-$heading ="HomePage";
-
-
-
-require("views/index.view.php");
+require 'functions.php';
+require 'router.php';
