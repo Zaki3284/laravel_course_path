@@ -6,7 +6,7 @@
         <h1 class="text-2xl font-bold">Sorry. Page Not Found.</h1>
 
         <p class="mt-4">
-            <a href="/laravel_course_path/basics/" class="text-blue-500 underline">Go back home.</a>
+            <a href="<?= baseUrl('/') ?>" class="text-blue-500 underline">Go back home.</a>
         </p>
     </div>
 </main>

@@ -1,18 +1,24 @@
 <?php
 
-require('functions.php');
+require_once('functions.php');
 
-$uri = str_replace(BASE_PATH, '', $_SERVER['REQUEST_URI']);
+// Normalize the URI by removing the base path and query string
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$uri = str_replace(BASE_PATH, '', $uri);
+$uri = rtrim($uri, '/');
+if ($uri === '') {
+    $uri = '/';
+}
 
 $routes = [
-    '/laravel_course_path/basics'        => 'views/index.view.php',
-    '/laravel_course_path/basics/about'   => 'views/about.view.php',
-    '/laravel_course_path/basics/contact' => 'views/contact.view.php',
+    '/'       => 'controllers/index.php',
+    '/about'  => 'controllers/about.php',
+    '/contact'=> 'controllers/contact.php',
 ];
 
 if (array_key_exists($uri, $routes)) {
     require $routes[$uri];
-    exit;  // ✅ Ajoute exit() pour arrêter
+    exit;
 } else {
     abort();
 }

@@ -11,7 +11,23 @@ function dd($value)
 
 define('BASE_PATH', '/laravel_course_path/basics');
 
+function baseUrl($path = '/')
+{
+    $basePath = rtrim(BASE_PATH, '/');
+
+    if ($path === '/' || $path === '') {
+        return "{$basePath}/";
+    }
+
+    return $basePath . '/' . ltrim($path, '/');
+}
+
 function urlIs($value) {
-    $uri = str_replace(BASE_PATH, '', $_SERVER['REQUEST_URI']);
+    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $uri = str_replace(BASE_PATH, '', $uri);
+    $uri = rtrim($uri, '/');
+    if ($uri === '') {
+        $uri = '/';
+    }
     return $uri === $value;
 }

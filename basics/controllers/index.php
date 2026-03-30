@@ -1,7 +1,5 @@
 <?php
-require 'router.php';
-$heading ="HomePage";
 
-
+$heading = "HomePage";
 
 require("views/index.view.php");
